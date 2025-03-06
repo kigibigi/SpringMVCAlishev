@@ -18,7 +18,7 @@ public class PersonDAO {
         people.add(new Person(PEOPLE_COUNT++ , "Ivan"));
         people.add(new Person(PEOPLE_COUNT++ , "Olga"));
         people.add(new Person(PEOPLE_COUNT++ , "Kristina"));
-        people.add(new Person(PEOPLE_COUNT++ , "Sregey"));
+        people.add(new Person(PEOPLE_COUNT++ , "Sergey"));
     }
 
     public List<Person> index() {
@@ -32,5 +32,15 @@ public class PersonDAO {
     public void save(Person person) {
         person.setId(++PEOPLE_COUNT);
         people.add(person);
+    }
+
+    public void update(int id, Person updatedPerson) {
+        Person personToBeUpdated = show(id);
+
+        personToBeUpdated.setName(updatedPerson.getName());
+    }
+
+    public void delete(int id) {
+        people.removeIf(person -> person.getId() == id);
     }
 }
